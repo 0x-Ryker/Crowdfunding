@@ -23,5 +23,7 @@ contract CrowdFunding {
         deadline = block.timestamp + 7 days;
     }
 
-    
+    function contribute() public payable {
+        
+    }
 }
