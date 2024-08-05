@@ -10,6 +10,10 @@ contract CrowdFunding {
     bool public isFunded;
     uint public deadline;
 
+    event hasContributed(address contributor, uint256 contributedAmount);
+    event hasWithdrawn(address withdrawer, uint withdrawnAmount);
+    event isRefunded(address refundee, uint256 refundedAmount);
+
     constructor(uint256 _targetFund, string memory _name) {
         beneficiary = msg.sender;
         targetFund = _targetFund * 1 ether;
@@ -18,4 +22,6 @@ contract CrowdFunding {
         isFunded = false;
         deadline = block.timestamp + 7 days;
     }
+
+    
 }
