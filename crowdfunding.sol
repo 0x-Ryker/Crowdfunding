@@ -9,6 +9,7 @@ contract CrowdFunding {
     bool public isComplete;
     bool public isFunded;
     uint public deadline;
+    mapping(address => uint) public contributors;
 
     event hasContributed(address contributor, uint256 contributedAmount);
     event hasWithdrawn(address withdrawer, uint withdrawnAmount);
