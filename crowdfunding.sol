@@ -11,9 +11,9 @@ contract CrowdFunding {
     uint public deadline;
     mapping(address => uint) public contributors;
 
-    event hasContributed(address contributor, uint256 contributedAmount);
-    event hasWithdrawn(address withdrawer, uint withdrawnAmount);
-    event isRefunded(address refundee, uint256 refundedAmount);
+    event hasContributed(address indexed contributor, uint256 indexed contributedAmount);
+    event hasWithdrawn(address indexed withdrawer, uint indexed withdrawnAmount);
+    event isRefunded(address indexed refundee, uint256 indexed refundedAmount);
 
     constructor(uint256 _targetFund, string memory _name) {
         beneficiary = msg.sender;
