@@ -54,4 +54,8 @@ contract CrowdFunding {
         withdrawValue = 0;
         emit hasWithdrawn(beneficiary, withdrawValue);
     }
+
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
+    }
 }
