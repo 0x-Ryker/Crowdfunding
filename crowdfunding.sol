@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8;
+pragma solidity ^0.8.26;
 
 contract CrowdFunding {
     uint256 public targetFund;
