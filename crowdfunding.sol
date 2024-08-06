@@ -26,7 +26,7 @@ contract CrowdFunding {
 
     function contribute() public payable {
         uint256 contributeAmount = msg.value;
-        contributeAmount = contributors[msg.sender];
+        contributors[msg.sender] = contributeAmount;
         require(block.timestamp < deadline, "cannot contribute after deadline.");
         require(totalContribution <= targetFund, "no more contribution after target amount is reached.");
         require(contributors[msg.sender] > 0, "enter an amount bigger than zero");
