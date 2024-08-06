@@ -62,4 +62,16 @@ contract CrowdFunding {
     function extendDeadline() public onlyBeneficiary() {
         deadline += 2 days;
     }
+
+    function getRefund() public payable {
+        require(block.timestamp < deadline, "you can't get refund after deadline.");
+        require(totalContribution < targetFund, "no refund after target fund is achieved.");
+        require(contributors[msg.sender] > 0, "you did not participate in this crowdfunding.");
+        uint refundAmount = contributors[msg.sender];
+        totalContribution -= refundAmount;
+        (bool success, ) = (msg.sender).call{value: refundAmount}("");
+        require(success, "unable to get refund");
+        emit isRefunded(msg.sender, refundAmount);
+        contributors[msg.sender] = 0;
+    }
 }
