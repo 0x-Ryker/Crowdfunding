@@ -47,5 +47,11 @@ contract CrowdFunding {
         require(block.timestamp >= deadline, "withdraw can only be initiated after deadline.");
         require(totalContribution >= targetFund, "you can only withdraw when the target funds is realized.");
         require(!isComplete, "the crowdfunding is not over");
+        isComplete = true;
+        uint withdrawValue = address(this).balance; // withdraw the entire funds from the smart contract.
+        (bool success, ) = (beneficiary).call{value: withdrawValue}("");
+        require(success, "unable to withdraw.");
+        withdrawValue = 0;
+        emit hasWithdrawn(beneficiary, withdrawValue);
     }
 }
