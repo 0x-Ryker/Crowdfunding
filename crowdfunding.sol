@@ -37,4 +37,11 @@ contract CrowdFunding {
         }
         emit hasContributed(msg.sender, contributeAmount);
     }
+
+    modifier onlyBeneficiary() {
+        require(beneficiary == msg.sender, "only beneficiary can call this function");
+        _;
+    }
+
+    
 }
