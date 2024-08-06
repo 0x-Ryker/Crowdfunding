@@ -43,5 +43,9 @@ contract CrowdFunding {
         _;
     }
 
-    
+    function withdraw() public onlyBeneficiary() {
+        require(block.timestamp >= deadline, "withdraw can only be initiated after deadline.");
+        require(totalContribution >= targetFund, "you can only withdraw when the target funds is realized.");
+        require(!isComplete, "the crowdfunding is not over");
+    }
 }
