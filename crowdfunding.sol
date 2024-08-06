@@ -58,4 +58,8 @@ contract CrowdFunding {
     function getBalance() public view returns(uint) {
         return address(this).balance;
     }
+
+    function extendDeadline() public onlyBeneficiary() {
+        deadline += 2 days;
+    }
 }
